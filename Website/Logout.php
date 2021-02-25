@@ -1,0 +1,14 @@
+<?php
+session_start();
+if(isset($_SESSION['logstatus'])){
+	if($_SESSION['logstatus']=='YES'){
+		$_SESSION['username']='';
+		$_SESSION['password']='';
+		$_SESSION['logstatus']='NO';
+	}
+	header('location:http://localhost/BookSite/Home.php');
+}
+else{
+	header('location:http://localhost/BookSite/Home.php');
+}
+?>

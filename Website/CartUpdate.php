@@ -1,0 +1,54 @@
+<?php
+session_start();
+if(isset($_SESSION['logstatus'])){
+	if($_SESSION['logstatus']=='NO'){
+		header('location:http://localhost/FoodSite/Login.php');
+	}
+	else{
+		$n1=$_POST['c'];
+		$n2=$_POST['cpp'];
+		$n3=$_POST['java'];
+		$n4=$_POST['python'];
+		$n5=$_POST['html'];
+		$n6=$_POST['css'];
+		$n7=$_POST['javascript'];
+		$n8=$_POST['php'];
+		$n9=$_POST['mysql'];
+		$n10=$_POST['ruby'];
+		$n11=$_POST['kotlin'];
+		$n12=$_POST['matlab'];
+		if($n1=='')
+			$n1=0;
+		if($n2=='')
+			$n2=0;
+		if($n3=='')
+			$n3=0;
+		if($n4=='')
+			$n4=0;
+		if($n5=='')
+			$n5=0;
+		if($n6=='')
+			$n6=0;
+		if($n7=='')
+			$n7=0;
+		if($n8=='')
+			$n8=0;
+		if($n9=='')
+			$n9=0;
+		if($n10=='')
+			$n10=0;
+		if($n11=='')
+			$n11=0;
+		if($n12=='')
+			$n12=0;
+		$con=mysqli_connect('localhost','root','123456789');
+		mysqli_select_db($con,'Book');
+		$query='update cart set c='.$n1.',cpp='.$n2.',java='.$n3.',python='.$n4.',html='.$n5.',css='.$n6.',javascript='.$n7.',php='.$n8.',mysql='.$n9.',ruby='.$n10.',kotlin='.$n11.',matlab='.$n12.' where username="'.$_SESSION['username'].'"';
+		$res=mysqli_query($con,$query);
+		header('location:http://localhost/BookSite/Cart.php');
+	}
+}
+else{
+	header('location:http://localhost/BookSite/MenuCard.php');
+}
+?>
